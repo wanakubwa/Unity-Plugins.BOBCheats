@@ -23,9 +23,6 @@ namespace BOBCheats
         [SerializeField]
         private List<CheatInfo> cheatsCollection = new List<CheatInfo>();
 
-        [SerializeField]
-        private bool tmp;
-
         #endregion
 
         #region Propeties
@@ -59,11 +56,6 @@ namespace BOBCheats
         #endregion
 
         #region Methods
-
-        private void OnValidate()
-        {
-            RefreshCheatsCollection();
-        }
 
         public void RefreshCheatsCollection()
         {

@@ -14,6 +14,10 @@ namespace BOBCheats
 
         private static BOBCheatsManager instance;
 
+        [Space]
+        [SerializeField]
+        private GameObject cheatMenuGUIPrefab;
+
         #endregion
 
         #region Propeties
@@ -34,6 +38,8 @@ namespace BOBCheats
             }
         }
 
+        public GameObject CheatMenuGUIPrefab { get => cheatMenuGUIPrefab; }
+
         public List<CheatInfo> CheatsCollection
         {
             get;
@@ -51,7 +57,6 @@ namespace BOBCheats
             BOBCheatsSettings cheatsSettings = BOBCheatsSettings.Instance;
             if (cheatsSettings == null)
             {
-                Debug.Log("[BOBCheat] Scriptable object BOBCheatsSettings not instanced! Can't load cheats!");
                 return;
             }
 
@@ -60,7 +65,8 @@ namespace BOBCheats
 
         public void ShowGUI()
         {
-            //todo;
+            GameObject cheatMenuGUI = Instantiate(CheatMenuGUIPrefab);
+            cheatMenuGUI.transform.localScale = Vector3.one;
         }
 
         public void UseCheat(CheatInfo cheat)
@@ -72,17 +78,25 @@ namespace BOBCheats
             }
 
             // TODO: Parameters of cheat.
+            Debug.LogFormat("[BOBCheat] Activate cheat name: {0}", cheat.CheatName);
             cheat.CachedInfo.Invoke(null, null);
         }
 
         private void Awake()
         {
-            if (BOBCheatsSettings.Instance?.IsManualInitialize == false)
+            BOBCheatsSettings cheatsSettings = BOBCheatsSettings.Instance;
+            if (cheatsSettings == null)
+            {
+                Debug.Log("[BOBCheat] Scriptable object BOBCheatsSettings not instanced! Can't load cheats!");
+                return;
+            }
+
+            if (cheatsSettings.IsManualInitialize == false)
             {
                 Initialize();
             }
 
-            CheatsCollection = BOBCheatsSettings.Instance?.CheatsCollection;
+            CheatsCollection = cheatsSettings.CheatsCollection;
         }
 
         #endregion
