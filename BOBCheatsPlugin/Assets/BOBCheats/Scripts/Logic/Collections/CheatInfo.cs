@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBCheats.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -13,7 +14,7 @@ namespace BOBCheats.Collections
     {
         #region Fields
 
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private string cheatName;
         [SerializeField, HideInInspector]
         private MethodInfo cachedInfo;
@@ -21,7 +22,7 @@ namespace BOBCheats.Collections
         #endregion
 
         #region Propeties
-
+        //xd
         public string CheatName { 
             get => cheatName; 
             private set => cheatName = value; 
