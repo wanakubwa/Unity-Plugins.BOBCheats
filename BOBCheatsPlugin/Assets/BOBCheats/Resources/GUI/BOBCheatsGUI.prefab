@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25490198, g: 0.26666668, b: 0.29411766, a: 1}
+  m_Color: {r: 0.21176471, g: 0.21176471, b: 0.21176471, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1253,6 +1253,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: -163
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332087966352648179, guid: 0ff4508569b194946afa99e72b331558,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8657619607214794465, guid: 0ff4508569b194946afa99e72b331558,
         type: 3}
