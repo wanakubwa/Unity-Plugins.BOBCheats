@@ -123,7 +123,19 @@ namespace BOBCheats
         /// <returns> Formatted cheat info instance. </returns>
         private CheatInfo GetFormattedCheatInfo(MethodInfo method)
         {
-            CheatInfo cheat = new CheatInfo(method.Name, method);
+            string cheatName = string.Empty;
+
+            CheatAttribute attribute = (CheatAttribute)method.GetCustomAttribute(typeof(CheatAttribute));
+            if(attribute.CheatName != string.Empty)
+            {
+                cheatName = attribute.CheatName;
+            }
+            else
+            {
+                cheatName = method.Name.AddSpaces();
+            }
+
+            CheatInfo cheat = new CheatInfo(cheatName, method);
             return cheat;
         }
 

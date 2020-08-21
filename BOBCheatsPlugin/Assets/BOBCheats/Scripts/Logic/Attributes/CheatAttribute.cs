@@ -10,19 +10,26 @@ namespace BOBCheats
     {
         #region Fields
 
-
-
         #endregion
 
         #region Propeties
 
-
+        public string CheatName
+        {
+            get;
+            private set;
+        } = string.Empty;
 
         #endregion
 
         #region Methods
 
+        public CheatAttribute() { }
 
+        public CheatAttribute(string name)
+        {
+            CheatName = name;
+        }
 
         #endregion
 

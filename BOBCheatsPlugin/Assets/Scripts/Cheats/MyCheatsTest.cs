@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MyCheatsTest : CheatBase
 {
-    [Cheat]
+    [Cheat("Custom-Name-test")]
     public static void CheatOneTest()
     {
         Debug.Log("Cheat one test");

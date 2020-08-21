@@ -9,6 +9,29 @@ namespace BOBCheats.Utils
 {
     static class UnityExtensions
     {
+        public static string AddSpaces(this string text)
+        {
+            if (string.IsNullOrWhiteSpace(text) == true)
+            {
+                return string.Empty;
+            }
+            
+            StringBuilder newText = new StringBuilder(text.Length * 2);
+            newText.Append(text[0]);
+
+            for (int i = 1; i < text.Length; i++)
+            {
+                if (char.IsUpper(text[i]) == true && text[i - 1] != ' ')
+                {
+                    newText.Append(' ');
+                }
+
+                newText.Append(text[i]);
+            }
+
+            return newText.ToString();
+        }
+
         public static List<Type> GetTypes(this Assembly assembly, Type lookup)
         {
             List<Type> output = new List<Type>();
