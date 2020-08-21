@@ -16,6 +16,10 @@ namespace BOBCheats
 
         private static BOBCheatsSettings instance;
 
+        [Space]
+        [SerializeField]
+        private bool isManualInitialize = false;
+
         [SerializeField]
         private List<CheatInfo> cheatsCollection = new List<CheatInfo>();
 
@@ -43,11 +47,14 @@ namespace BOBCheats
             }
         }
 
-        internal List<CheatInfo> CheatsCollection { 
+        public List<CheatInfo> CheatsCollection { 
             get => cheatsCollection; 
             private set => cheatsCollection = value; 
         }
 
+        public bool IsManualInitialize { 
+            get => isManualInitialize; 
+        }
 
         #endregion
 

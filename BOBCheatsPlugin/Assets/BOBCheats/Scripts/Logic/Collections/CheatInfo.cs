@@ -10,7 +10,7 @@ using UnityEngine;
 namespace BOBCheats.Collections
 {
     [Serializable]
-    class CheatInfo
+    public class CheatInfo
     {
         #region Fields
 

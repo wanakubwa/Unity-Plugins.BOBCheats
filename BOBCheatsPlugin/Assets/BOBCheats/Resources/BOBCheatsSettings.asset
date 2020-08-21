@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f277341d67c1e4d9e4559c18d7796b, type: 3}
   m_Name: BOBCheatsSettings
   m_EditorClassIdentifier: 
-  cheatsCollection: []
+  isManualInitialize: 0
+  cheatsCollection:
+  - cheatName: CheatSecondOneTest
+  - cheatName: CheatSecondSecondTest
+  - cheatName: CheatOneTest
+  - cheatName: CheatSecondTest
   tmp: 1
