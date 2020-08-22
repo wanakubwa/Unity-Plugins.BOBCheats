@@ -20,18 +20,18 @@ namespace BOBCheats.Utils
             }
         }
 
-        public static void ClearDestroy<T>(this IList<T> objects) where T : Component
+        public static void ClearDestroy<T>(this ICollection<T> objects) where T : Component
         {
-            if (objects.IsNullOrEmpty() == true)
+            if (objects == null)
             {
                 return;
             }
 
             for (int i = 0; i < objects.Count; i++)
             {
-                if (objects[i] != null)
+                if (objects.ElementAt(i) != null)
                 {
-                    UnityEngine.Object.Destroy(objects[i].gameObject);
+                    UnityEngine.Object.Destroy(objects.ElementAt(i).gameObject);
                 }
             }
 

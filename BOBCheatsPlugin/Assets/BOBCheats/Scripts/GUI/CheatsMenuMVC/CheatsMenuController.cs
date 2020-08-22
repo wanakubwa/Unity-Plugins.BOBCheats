@@ -4,7 +4,7 @@ using System.Collections;
 namespace BOBCheats.GUI
 {
     [RequireComponent(typeof(CheatsMenuModel), typeof(CheatsMenuView))]
-    public class CheatsMenuController : UIController
+    public class CheatsMenuController : BOBUIController
     {
         #region Fields
 

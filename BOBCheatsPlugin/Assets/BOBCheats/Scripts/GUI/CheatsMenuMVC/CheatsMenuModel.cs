@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BOBCheats.GUI
 {
-    public class CheatsMenuModel : UIModel
+    public class CheatsMenuModel : BOBUIModel
     {
         #region Fields
 

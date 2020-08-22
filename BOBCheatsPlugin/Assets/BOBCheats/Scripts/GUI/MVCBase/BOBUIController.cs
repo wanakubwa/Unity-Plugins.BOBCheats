@@ -3,27 +3,27 @@ using System.Collections;
 
 namespace BOBCheats.GUI
 {
-    public abstract class UIController : MonoBehaviour
+    public abstract class BOBUIController : MonoBehaviour
     {
         #region Fields
 
         [Space]
         [SerializeField]
-        private UIModel model;
+        private BOBUIModel model;
         [SerializeField]
-        private UIView view;
+        private BOBUIView view;
 
         #endregion
 
         #region Propeties
 
-        internal UIModel Model
+        internal BOBUIModel Model
         {
             get => model;
             private set => model = value;
         }
 
-        internal UIView View
+        internal BOBUIView View
         {
             get => view;
             private set => view = value;
@@ -71,15 +71,15 @@ namespace BOBCheats.GUI
             View.Initialize();
         }
 
-        public T GetModel<T>() where T : UIModel
+        public T GetModel<T>() where T : BOBUIModel
         {
-            T model = GetComponent<UIModel>() as T;
+            T model = GetComponent<BOBUIModel>() as T;
             return model;
         }
 
-        public T GetView<T>() where T : UIView
+        public T GetView<T>() where T : BOBUIView
         {
-            T model = GetComponent<UIView>() as T;
+            T model = GetComponent<BOBUIView>() as T;
             return model;
         }
 

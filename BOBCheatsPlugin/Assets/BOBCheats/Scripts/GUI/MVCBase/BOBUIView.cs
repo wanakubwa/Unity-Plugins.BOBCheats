@@ -3,14 +3,17 @@ using System.Collections;
 
 namespace BOBCheats.GUI
 {
-    public abstract class UIModel : MonoBehaviour
+    public abstract class BOBUIView : MonoBehaviour
     {
-
         #region Fields
+
+
 
         #endregion
 
         #region Propeties
+
+
 
         #endregion
 
@@ -31,10 +34,10 @@ namespace BOBCheats.GUI
 
         }
 
-        public T GetView<T>() where T : UIView
+        public T GetModel<T>() where T : BOBUIModel
         {
-            T view = GetComponent<UIView>() as T;
-            return view;
+            T model = GetComponent<BOBUIModel>() as T;
+            return model;
         }
 
         #endregion

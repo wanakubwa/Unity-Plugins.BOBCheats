@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace BOBCheats.GUI
 {
-    public class CheatsMenuView : UIView
+    public class CheatsMenuView : BOBUIView
     {
         #region Fields
 
