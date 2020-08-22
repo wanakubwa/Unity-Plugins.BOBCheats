@@ -1,4 +1,5 @@
 ﻿using BOBCheats.Collections;
+using BOBCheats.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace BOBCheats
 
         [Space]
         [SerializeField]
-        private GameObject cheatMenuGUIPrefab;
+        private CheatsMenuController cheatMenuGUIPrefab;
 
         #endregion
 
@@ -38,7 +39,7 @@ namespace BOBCheats
             }
         }
 
-        public GameObject CheatMenuGUIPrefab { get => cheatMenuGUIPrefab; }
+        public CheatsMenuController CheatMenuGUIPrefab { get => cheatMenuGUIPrefab; }
 
         public List<CheatInfo> CheatsCollection
         {
@@ -46,13 +47,25 @@ namespace BOBCheats
             private set;
         } = new List<CheatInfo>();
 
+        private CheatsMenuController CurrentCheatGUI
+        {
+            get;
+            set;
+        }
+
+        private KeyCode TriggerKey
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         /// <summary>
         /// Use it for initialize BOB cheats collections. If using manual initialize setted in settings.
         /// </summary>
         #region Methods
-        public static void Initialize()
+        public void Initialize()
         {
             BOBCheatsSettings cheatsSettings = BOBCheatsSettings.Instance;
             if (cheatsSettings == null)
@@ -61,12 +74,35 @@ namespace BOBCheats
             }
 
             cheatsSettings.RefreshCheatsCollection();
+            CheatsCollection = cheatsSettings.CheatsCollection;
+        }
+
+        public void ToggleCheatMenuGUI()
+        {
+            if(CurrentCheatGUI != null)
+            {
+                HideGUI();
+            }
+            else
+            {
+                ShowGUI();
+            }
         }
 
         public void ShowGUI()
         {
-            GameObject cheatMenuGUI = Instantiate(CheatMenuGUIPrefab);
+            CheatsMenuController cheatMenuGUI = Instantiate(CheatMenuGUIPrefab);
             cheatMenuGUI.transform.localScale = Vector3.one;
+            CurrentCheatGUI = cheatMenuGUI;
+        }
+
+        public void HideGUI()
+        {
+            if(CurrentCheatGUI != null)
+            {
+                CurrentCheatGUI.DestroyGUIWindow();
+                CurrentCheatGUI = null;
+            }
         }
 
         public void UseCheat(CheatInfo cheat, object[] parameters)
@@ -77,7 +113,6 @@ namespace BOBCheats
                 return;
             }
 
-            // TODO: Parameters of cheat.
             Debug.LogFormat("[BOBCheat] Activate cheat name: {0}", cheat.CheatName);
             cheat.CachedInfo.Invoke(null, parameters);
         }
@@ -91,12 +126,24 @@ namespace BOBCheats
                 return;
             }
 
+            TriggerKey = cheatsSettings.TriggerKey;
+
             if (cheatsSettings.IsManualInitialize == false)
             {
                 Initialize();
             }
+            else
+            {
+                CheatsCollection = cheatsSettings.CheatsCollection;
+            }
+        }
 
-            CheatsCollection = cheatsSettings.CheatsCollection;
+        private void Update()
+        {
+            if(Input.GetKeyDown(TriggerKey) == true)
+            {
+                ToggleCheatMenuGUI();
+            }
         }
 
         #endregion

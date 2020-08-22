@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: BOBCheatsSettings
   m_EditorClassIdentifier: 
   isManualInitialize: 0
+  triggerKey: 293
   cheatsCollection:
-  - cheatName: CheatSecondOneTest
-  - cheatName: CheatSecondSecondTest
-  - cheatName: CheatOneTest
-  - cheatName: CheatSecondTest
-  tmp: 1
+  - cheatName: Cheat Second One Test
+  - cheatName: Cheat Second Second Test
+  - cheatName: Custom-Name-test
+  - cheatName: Parametrized cheat test
+  - cheatName: Cheat Second Test

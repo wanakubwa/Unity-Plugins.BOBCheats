@@ -19,7 +19,10 @@ namespace BOBCheats
         [Space]
         [SerializeField]
         private bool isManualInitialize = false;
+        [SerializeField]
+        private KeyCode triggerKey;
 
+        [Space]
         [SerializeField]
         private List<CheatInfo> cheatsCollection = new List<CheatInfo>();
 
@@ -53,9 +56,19 @@ namespace BOBCheats
             get => isManualInitialize; 
         }
 
+        public KeyCode TriggerKey { 
+            get => triggerKey;
+            private set => triggerKey = value;
+        }
+
         #endregion
 
         #region Methods
+
+        public void SetTriggerKey(KeyCode key)
+        {
+            TriggerKey = key;
+        }
 
         public void RefreshCheatsCollection()
         {
