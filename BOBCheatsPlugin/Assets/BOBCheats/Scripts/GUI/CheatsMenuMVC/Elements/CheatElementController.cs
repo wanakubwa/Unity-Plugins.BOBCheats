@@ -19,6 +19,8 @@ namespace BOBCheats.GUI
         [SerializeField]
         private Text cheatNameLabel;
         [SerializeField]
+        private Text noParametersLabel;
+        [SerializeField]
         private RectTransform parametersParent;
         [SerializeField]
         private List<ParameterInputField> inputFieldsCollection = new List<ParameterInputField>();
@@ -44,6 +46,10 @@ namespace BOBCheats.GUI
 
         public RectTransform ParametersParent {
             get => parametersParent; 
+        }
+
+        public Text NoParametersLabel { 
+            get => noParametersLabel; 
         }
 
         public CheatInfo CachedCheat
@@ -100,10 +106,11 @@ namespace BOBCheats.GUI
             ParameterInfo[] cheatParameters = method.GetParameters();
             if(cheatParameters.IsNullOrEmpty() == true)
             {
-                //tod; label with info.
+                NoParametersLabel.gameObject.SetActive(true);
                 return;
             }
 
+            NoParametersLabel.gameObject.SetActive(false);
             SpawnedParametersFields.ClearDestroy();
 
             for(int i = 0; i < cheatParameters.Length; i++)
