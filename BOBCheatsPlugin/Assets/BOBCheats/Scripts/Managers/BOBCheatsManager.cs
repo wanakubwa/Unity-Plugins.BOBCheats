@@ -59,6 +59,10 @@ namespace BOBCheats
             set;
         }
 
+        private bool OneClick { get; set; } = false;
+        private float TimerForDoubleClick { get; set; }
+        private float DoubleClickDelay { get; set; } = 0.2f;
+
         #endregion
 
         /// <summary>
@@ -79,7 +83,7 @@ namespace BOBCheats
 
         public void ToggleCheatMenuGUI()
         {
-            if(CurrentCheatGUI != null)
+            if (CurrentCheatGUI != null)
             {
                 HideGUI();
             }
@@ -98,7 +102,7 @@ namespace BOBCheats
 
         public void HideGUI()
         {
-            if(CurrentCheatGUI != null)
+            if (CurrentCheatGUI != null)
             {
                 CurrentCheatGUI.DestroyGUIWindow();
                 CurrentCheatGUI = null;
@@ -107,7 +111,7 @@ namespace BOBCheats
 
         public void UseCheat(CheatInfo cheat, object[] parameters)
         {
-            if(cheat == null)
+            if (cheat == null)
             {
                 Debug.Log("Cheat was null! Can't use it!");
                 return;
@@ -140,18 +144,40 @@ namespace BOBCheats
 
         private void Update()
         {
-            if(Input.GetKeyDown(TriggerKey) == true)
+            if (Input.GetKeyDown(TriggerKey) == true)
             {
                 ToggleCheatMenuGUI();
             }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (OneClick == false)
+                {
+                    OneClick = true;
+
+                    TimerForDoubleClick = Time.time;
+                }
+                else
+                {
+                    OneClick = false;
+                    ToggleCheatMenuGUI();
+                }
+            }
+            if (OneClick)
+            {
+                if ((Time.time - TimerForDoubleClick) > DoubleClickDelay)
+                {
+                    OneClick = false;
+                }
+            }
+
+            #endregion
+
+            #region Enums
+
+
+
+            #endregion
         }
-
-        #endregion
-
-        #region Enums
-
-
-
-        #endregion
     }
 }
