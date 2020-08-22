@@ -4,11 +4,67 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace BOBCheats.Utils
 {
     static class UnityExtensions
     {
+        public static void ResetParent(this Transform transform, Transform parent)
+        {
+            if (transform != null && parent != null)
+            {
+                transform.SetParent(parent, false);
+                transform.localScale = Vector3.one;
+                transform.gameObject.SetActive(true);
+            }
+        }
+
+        public static void ClearDestroy<T>(this IList<T> objects) where T : Component
+        {
+            if (objects.IsNullOrEmpty() == true)
+            {
+                return;
+            }
+
+            for (int i = 0; i < objects.Count; i++)
+            {
+                if (objects[i] != null)
+                {
+                    UnityEngine.Object.Destroy(objects[i].gameObject);
+                }
+            }
+
+            objects.Clear();
+        }
+
+        public static int ParseToInt(this string text)
+        {
+            text = text.Trim();
+
+            int output;
+            if (int.TryParse(text, out output) == true)
+            {
+                return output;
+            }
+
+            return 0;
+        }
+
+        public static float ParseToFloat(this string text)
+        {
+            text = text.Trim();
+            text = text.Replace('.', ',');
+
+            float output;
+            if (float.TryParse(text, out output) == true)
+            {
+                return output;
+            }
+
+            return 0f;
+        }
+
         public static string AddSpaces(this string text)
         {
             if (string.IsNullOrWhiteSpace(text) == true)
@@ -75,6 +131,11 @@ namespace BOBCheats.Utils
             }
 
             return false;
+        }
+
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> collection)
+        {
+            return collection == null || collection.Count() < 1;
         }
     }
 }

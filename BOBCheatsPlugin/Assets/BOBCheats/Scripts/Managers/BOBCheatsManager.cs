@@ -69,7 +69,7 @@ namespace BOBCheats
             cheatMenuGUI.transform.localScale = Vector3.one;
         }
 
-        public void UseCheat(CheatInfo cheat)
+        public void UseCheat(CheatInfo cheat, object[] parameters)
         {
             if(cheat == null)
             {
@@ -79,7 +79,7 @@ namespace BOBCheats
 
             // TODO: Parameters of cheat.
             Debug.LogFormat("[BOBCheat] Activate cheat name: {0}", cheat.CheatName);
-            cheat.CachedInfo.Invoke(null, null);
+            cheat.CachedInfo.Invoke(null, parameters);
         }
 
         private void Awake()

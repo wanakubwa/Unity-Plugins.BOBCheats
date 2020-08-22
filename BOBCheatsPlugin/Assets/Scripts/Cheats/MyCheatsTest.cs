@@ -11,6 +11,13 @@ public class MyCheatsTest : CheatBase
         Debug.Log("Cheat one test");
     }
 
+    [Cheat("Parametrized cheat test")]
+    public static void CheatParametersTest(int intParam, float floatParam, string stringParam)
+    {
+        Debug.LogFormat("Parameters cheat test: int {0}, float {1}, string {2}", intParam, floatParam, stringParam);
+    }
+
+
     [Cheat]
     public static void CheatSecondTest()
     {

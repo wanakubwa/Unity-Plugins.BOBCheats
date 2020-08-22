@@ -66,7 +66,7 @@ namespace BOBCheats.GUI
                 cheatElement.transform.localScale = Vector3.one;
                 cheatElement.gameObject.SetActive(true);
 
-                cheatElement.SetCachedCheat(cheats[i]);
+                cheatElement.DrawCheatElement(cheats[i]);
                 SpawnedCheatsElements.Add(cheatElement);
             }
         }

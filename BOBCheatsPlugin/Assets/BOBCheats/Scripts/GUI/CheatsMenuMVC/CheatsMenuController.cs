@@ -33,7 +33,7 @@ namespace BOBCheats.GUI
 
         public void SelectCheat(CheatElementController sender)
         {
-            Model.EnableCheat(sender.CachedCheat);
+            Model.EnableCheat(sender.CachedCheat, sender.GetCheatParameters());
         }
 
         #endregion
