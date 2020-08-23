@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f277341d67c1e4d9e4559c18d7796b, type: 3}
   m_Name: BOBCheatsSettings
   m_EditorClassIdentifier: 
+  text: {fileID: 2800000, guid: 11935d9b3d3a5244483a46533c58ce57, type: 3}
   isManualInitialize: 0
   triggerKey: 293
   cheatsCollection:

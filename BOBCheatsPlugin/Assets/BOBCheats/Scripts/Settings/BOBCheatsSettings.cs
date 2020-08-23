@@ -53,7 +53,8 @@ namespace BOBCheats
         }
 
         public bool IsManualInitialize { 
-            get => isManualInitialize; 
+            get => isManualInitialize;
+            private set => isManualInitialize = value;
         }
 
         public KeyCode TriggerKey { 
@@ -64,6 +65,11 @@ namespace BOBCheats
         #endregion
 
         #region Methods
+
+        public void SetIsManualInitialize(bool isManual)
+        {
+            IsManualInitialize = isManual;
+        }
 
         public void SetTriggerKey(KeyCode key)
         {
