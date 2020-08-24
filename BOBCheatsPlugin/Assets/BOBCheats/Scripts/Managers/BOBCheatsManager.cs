@@ -112,6 +112,8 @@ namespace BOBCheats
 
         private void Awake()
         {
+            DontDestroyCheck();
+
             BOBCheatsSettings cheatsSettings = BOBCheatsSettings.Instance;
             if (cheatsSettings == null)
             {
@@ -121,6 +123,20 @@ namespace BOBCheats
 
             TriggerKey = cheatsSettings.TriggerKey;
             CheatsCollection = cheatsSettings.CheatsCollection;
+        }
+
+        private void DontDestroyCheck()
+        {
+            BOBCheatsManager[] objs = FindObjectsOfType<BOBCheatsManager>();
+
+            if (objs.Length > 1)
+            {
+                gameObject.SetActive(false);
+                Destroy(this.gameObject);
+                return;
+            }
+
+            DontDestroyOnLoad(this.gameObject);
         }
 
         private void Update()
