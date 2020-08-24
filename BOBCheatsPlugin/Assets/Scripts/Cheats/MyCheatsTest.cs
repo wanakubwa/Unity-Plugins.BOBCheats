@@ -5,22 +5,33 @@ using UnityEngine;
 
 public class MyCheatsTest : CheatBase
 {
-    [Cheat("Custom-Name-test")]
-    public static void CheatOneTest()
+    [Cheat]
+    public static void PauseGameCheat()
     {
-        Debug.Log("Cheat one test");
+        Debug.Log("PauseGameCheat");
     }
-
-    [Cheat("Parametrized cheat test")]
-    public static void CheatParametersTest(int intParam, float floatParam, string stringParam)
-    {
-        Debug.LogFormat("Parameters cheat test: int {0}, float {1}, string {2}", intParam, floatParam, stringParam);
-    }
-
 
     [Cheat]
-    public static void CheatSecondTest()
+    public static void SetTimeMultiplierCheat(float value)
     {
-        Debug.Log("Cheat second test");
+        Debug.LogFormat("SetTimeMultiplierCheat {0}", value);
+    }
+
+    [Cheat]
+    public static void GodModeCheat()
+    {
+        Debug.Log("GodModeCheat");
+    }
+
+    [Cheat("Change Weather - Rain")]
+    public static void MakeItRain()
+    {
+        Debug.Log("MakeItRain");
+    }
+
+    [Cheat("Coins +")]
+    public static void AddConstantCointsCheat(int coins)
+    {
+        Debug.LogFormat("AddConstantCointsCheat coins: {0}", coins);
     }
 }
