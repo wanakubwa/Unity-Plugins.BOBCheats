@@ -69,17 +69,6 @@ namespace BOBCheats
         /// Use it for initialize BOB cheats collections. If using manual initialize setted in settings.
         /// </summary>
         #region Methods
-        public void Initialize()
-        {
-            BOBCheatsSettings cheatsSettings = BOBCheatsSettings.Instance;
-            if (cheatsSettings == null)
-            {
-                return;
-            }
-
-            cheatsSettings.RefreshCheatsCollection();
-            CheatsCollection = cheatsSettings.CheatsCollection;
-        }
 
         public void ToggleCheatMenuGUI()
         {
@@ -131,15 +120,7 @@ namespace BOBCheats
             }
 
             TriggerKey = cheatsSettings.TriggerKey;
-
-            if (cheatsSettings.IsManualInitialize == false)
-            {
-                Initialize();
-            }
-            else
-            {
-                CheatsCollection = cheatsSettings.CheatsCollection;
-            }
+            CheatsCollection = cheatsSettings.CheatsCollection;
         }
 
         private void Update()

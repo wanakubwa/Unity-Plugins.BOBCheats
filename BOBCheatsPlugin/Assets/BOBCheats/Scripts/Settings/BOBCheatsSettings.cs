@@ -18,8 +18,6 @@ namespace BOBCheats
 
         [Space]
         [SerializeField]
-        private bool isManualInitialize = false;
-        [SerializeField]
         private KeyCode triggerKey;
 
         [Space]
@@ -52,11 +50,6 @@ namespace BOBCheats
             private set => cheatsCollection = value; 
         }
 
-        public bool IsManualInitialize { 
-            get => isManualInitialize;
-            private set => isManualInitialize = value;
-        }
-
         public KeyCode TriggerKey { 
             get => triggerKey;
             private set => triggerKey = value;
@@ -65,11 +58,6 @@ namespace BOBCheats
         #endregion
 
         #region Methods
-
-        public void SetIsManualInitialize(bool isManual)
-        {
-            IsManualInitialize = isManual;
-        }
 
         public void SetTriggerKey(KeyCode key)
         {
@@ -93,6 +81,15 @@ namespace BOBCheats
             }
 
             CheatsCollection = GetCheatsInfoCollection(cheatsMethods);
+        }
+
+        private void OnEnable()
+        {
+
+#if UNITY_EDITOR
+            RefreshCheatsCollection();
+#endif
+
         }
 
         private List<Type> GetCheatsContainersInAssemblies()

@@ -60,20 +60,19 @@ namespace BOBCheats.Editor
 
             EditorGUILayout.BeginVertical();
 
-            DrawToggle("Manual Initialization", Settings.IsManualInitialize, Settings.SetIsManualInitialize);
             DrawEnumPopUp("Activate key short", Settings.TriggerKey, Settings.SetTriggerKey);
-
             EditorGUILayout.Space();
             DrawButton("Reload cheats collection", Settings.RefreshCheatsCollection);
 
             EditorGUILayout.EndVertical();
         }
 
-        private void DrawToggle(string toggleName, bool value,  Action<bool> callback)
-        {
-            bool toggleValue = EditorGUILayout.Toggle(toggleName, value);
-            callback(toggleValue);
-        }
+        // Not in use but can be helpfull in future.
+        //private void DrawToggle(string toggleName, bool value,  Action<bool> callback)
+        //{
+        //    bool toggleValue = EditorGUILayout.Toggle(toggleName, value);
+        //    callback(toggleValue);
+        //}
 
         private void DrawEnumPopUp<T>(string label, T currentValue, Action<T> callback) where T : Enum
         {
