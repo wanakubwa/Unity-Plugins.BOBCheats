@@ -63,6 +63,8 @@ namespace BOBCheats.Editor
             DrawEnumPopUp("Activate key short", Settings.TriggerKey, Settings.SetTriggerKey);
             EditorGUILayout.Space();
             DrawButton("Reload cheats collection", Settings.RefreshCheatsCollection);
+            EditorGUILayout.Space();
+            DrawButton("Create BOBManager", EditorGameObjectSpawner.CreateBOBManagerObject);
 
             EditorGUILayout.EndVertical();
         }

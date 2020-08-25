@@ -39,7 +39,7 @@ namespace BOBCheats
             }
         }
 
-        public CheatsMenuController CheatMenuGUIPrefab { get => cheatMenuGUIPrefab; }
+        public CheatsMenuController CheatMenuGUIPrefab { get => cheatMenuGUIPrefab; set => cheatMenuGUIPrefab = value; }
 
         public List<CheatInfo> CheatsCollection
         {
