@@ -121,6 +121,8 @@ namespace BOBCheats
                 return;
             }
 
+            cheatsSettings.RefreshCheatsCollection();
+
             TriggerKey = cheatsSettings.TriggerKey;
             CheatsCollection = cheatsSettings.CheatsCollection;
         }
