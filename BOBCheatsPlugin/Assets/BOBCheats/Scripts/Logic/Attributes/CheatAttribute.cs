@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BOBCheats
 {
+    [AttributeUsage(AttributeTargets.Method)]
     public class CheatAttribute : Attribute
     {
         #region Fields
