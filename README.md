@@ -1,4 +1,7 @@
 # BOBCheats - Unity plugin ![GeekBox Logo](https://github.com/wanakubwa/GeekBox-Unity-Game.Area51/blob/master/Game_Images/48x48_Logo.png)
+
+<p align="center"><img width="100%" src="https://github.com/wanakubwa/BOBCheats/blob/master/Graphic/BOB_Github_cover.png" /></p>
+
 ### BOB is a smart cheats system for unity games. The idea to create this plugin was one thing, to create a system that would make creating cheats for your game a pleasure. You can create cheats and use it in game by writing just one single method.
 
 #### If you like this plugin, you can pin a star :star: on it, and like our [**facebook fanpage**](https://www.facebook.com/GeekBox-109186153819085) :thumbsup: (and left a comment with your opinion) so that you don't miss any more plugins.
@@ -96,6 +99,11 @@ Example of using `[Cheat]` attribute with and without parameters.
 ## License
 
 [MIT][mit] © [wanakubwa][author]
+
+<p align="center"> <a href="https://www.buymeacoffee.com/wanakubwa" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+    <br />
+  You can also support me by buying a coffe! :coffee:
+</p>
 
 [mit]:      http://opensource.org/licenses/MIT
 [author]:   http://github.com/wanakubwa
