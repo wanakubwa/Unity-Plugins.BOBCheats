@@ -39,7 +39,7 @@ public class GameCheats : CheatBase
 ```csharp
 using BOBCheats;
 
-// Example of class to store cheats with one simple cheat method.
+// Example of class to store cheats with simple cheat methods.
 public class GameCheats : CheatBase
 {
     [Cheat]
