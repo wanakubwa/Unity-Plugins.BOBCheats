@@ -41,11 +41,10 @@ namespace BOBCheats
 
         public CheatsMenuController CheatMenuGUIPrefab { get => cheatMenuGUIPrefab; set => cheatMenuGUIPrefab = value; }
 
-        public List<CheatInfo> CheatsCollection
-        {
+        public List<CheatCategory> CategoriesCollection {
             get;
             private set;
-        } = new List<CheatInfo>();
+        } = new List<CheatCategory>();
 
         private CheatsMenuController CurrentCheatGUI
         {
@@ -124,7 +123,7 @@ namespace BOBCheats
             cheatsSettings.RefreshCheatsCollection();
 
             TriggerKey = cheatsSettings.TriggerKey;
-            CheatsCollection = cheatsSettings.CheatsCollection;
+            CategoriesCollection = cheatsSettings.CheatsCategories;
         }
 
         private void DontDestroyCheck()

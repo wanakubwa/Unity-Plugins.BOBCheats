@@ -31,10 +31,10 @@ namespace BOBCheats.GUI
             Model = GetModel<CheatsMenuModel>();
         }
 
-        public void SelectCheat(CheatElementController sender)
-        {
-            Model.EnableCheat(sender.CachedCheat, sender.GetCheatParameters());
-        }
+        //public void SelectCheat(CheatElementController sender)
+        //{
+        //    Model.EnableCheat(sender.CachedCheat, sender.GetCheatParameters());
+        //}
 
         #endregion
 

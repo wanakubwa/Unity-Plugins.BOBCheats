@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BOBCheats
 {
@@ -15,8 +11,12 @@ namespace BOBCheats
 
         #region Propeties
 
-        public string CheatName
-        {
+        public string CheatName {
+            get;
+            private set;
+        } = string.Empty;
+
+        public string CheatCategory {
             get;
             private set;
         } = string.Empty;
@@ -27,9 +27,15 @@ namespace BOBCheats
 
         public CheatAttribute() { }
 
-        public CheatAttribute(string name)
+        public CheatAttribute(string category)
+        {
+            CheatCategory = category;
+        }
+
+        public CheatAttribute(string category, string name)
         {
             CheatName = name;
+            CheatCategory = category;
         }
 
         #endregion

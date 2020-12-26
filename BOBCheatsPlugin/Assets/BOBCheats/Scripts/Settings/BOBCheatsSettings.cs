@@ -1,7 +1,6 @@
 ﻿using BOBCheats.Collections;
 using BOBCheats.Utils;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -14,6 +13,8 @@ namespace BOBCheats
     {
         #region Fields
 
+        public const string DEFAULT_CATEGORY_NAME = "Other";
+
         private static BOBCheatsSettings instance;
 
         [Space]
@@ -22,7 +23,7 @@ namespace BOBCheats
 
         [Space]
         [SerializeField]
-        private List<CheatInfo> cheatsCollection = new List<CheatInfo>();
+        private List<CheatCategory> cheatsCategories = new List<CheatCategory>();
 
         #endregion
 
@@ -45,14 +46,14 @@ namespace BOBCheats
             }
         }
 
-        public List<CheatInfo> CheatsCollection { 
-            get => cheatsCollection; 
-            private set => cheatsCollection = value; 
-        }
-
         public KeyCode TriggerKey { 
             get => triggerKey;
             private set => triggerKey = value;
+        }
+
+        internal List<CheatCategory> CheatsCategories { 
+            get => cheatsCategories; 
+            private set => cheatsCategories = value; 
         }
 
         #endregion
@@ -66,7 +67,7 @@ namespace BOBCheats
 
         public void RefreshCheatsCollection()
         {
-            CheatsCollection.Clear();
+            CheatsCategories.Clear();
 
             List<Type> cheatsContainers = GetCheatsContainersInAssemblies();
             if(cheatsContainers.IsNullOrEmpty() == true)
@@ -80,7 +81,7 @@ namespace BOBCheats
                 return;
             }
 
-            CheatsCollection = GetCheatsInfoCollection(cheatsMethods);
+            CreateCheatsCategoryCollection(cheatsMethods);
         }
 
         private void OnEnable()
@@ -121,15 +122,44 @@ namespace BOBCheats
             return cheatsMethods;
         }
 
-        private List<CheatInfo> GetCheatsInfoCollection(List<MethodInfo> cheatsMethods)
+        private void CreateCheatsCategoryCollection(List<MethodInfo> cheatsMethods)
         {
-            List<CheatInfo> cheatInfos = new List<CheatInfo>();
-            for(int i =0; i < cheatsMethods.Count; i++)
+            for (int i = 0; i < cheatsMethods.Count; i++)
             {
-                cheatInfos.Add(GetFormattedCheatInfo(cheatsMethods[i]));
+                AddCheatMethodToCategory(cheatsMethods[i]);
+            }
+        }
+
+        private void AddCheatMethodToCategory(MethodInfo cheatMethod)
+        {
+            CheatAttribute attribute = (CheatAttribute)cheatMethod.GetCustomAttribute(typeof(CheatAttribute));
+
+            string cheatCategory = attribute.CheatCategory == string.Empty ? DEFAULT_CATEGORY_NAME : attribute.CheatCategory;
+
+            CheatCategory currentCategory = GetCheatCategoryByName(cheatCategory);
+            currentCategory.AddCheat(GetFormattedCheatInfo(cheatMethod));
+        }
+
+        private CheatCategory GetCheatCategoryByName(string name)
+        {
+            CheatCategory category = null;
+
+            foreach (CheatCategory cheatCategory in CheatsCategories)
+            {
+                if(cheatCategory.Equals(name) == true)
+                {
+                    category = cheatCategory;
+                    break;
+                }
             }
 
-            return cheatInfos;
+            if(category == null)
+            {
+                category = new CheatCategory(name);
+                CheatsCategories.Add(category);
+            }
+
+            return category;
         }
 
         /// <summary>

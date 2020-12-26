@@ -24,9 +24,6 @@ namespace BOBCheats.GUI
         private RectTransform parametersParent;
         [SerializeField]
         private List<ParameterInputField> inputFieldsCollection = new List<ParameterInputField>();
-        [Space]
-        [SerializeField]
-        private UnityEvent onSelectCheat;
 
         #endregion
 
@@ -34,10 +31,6 @@ namespace BOBCheats.GUI
 
         public Text CheatNameLabel { 
             get => cheatNameLabel; 
-        }
-
-        public UnityEvent OnSelectCheat { 
-            get => onSelectCheat; 
         }
 
         public List<ParameterInputField> InputFieldsCollection { 
@@ -87,7 +80,11 @@ namespace BOBCheats.GUI
 
         public void UseCheat()
         {
-            OnSelectCheat.Invoke();
+            BOBCheatsManager bOBCheatsManager = BOBCheatsManager.Instance;
+            if (bOBCheatsManager != null)
+            {
+                bOBCheatsManager.UseCheat(CachedCheat, GetCheatParameters());
+            }
         }
 
         public object[] GetCheatParameters()

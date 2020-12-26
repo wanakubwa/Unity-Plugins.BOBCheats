@@ -13,13 +13,13 @@ namespace BOBCheats.GUI
 
         [Space]
         [SerializeField]
-        private CheatElementController cheatElementPrefab;
+        private CheatCategoryPanelElement cheatCategoryPrefab;
 
         #endregion
 
         #region Propeties
 
-        public CheatElementController CheatElementPrefab { get => cheatElementPrefab; }
+        public CheatCategoryPanelElement CheatCategoryPrefab { get => cheatCategoryPrefab; }
 
         private CheatsMenuModel Model
         {
@@ -27,11 +27,11 @@ namespace BOBCheats.GUI
             set;
         }
 
-        private List<CheatElementController> SpawnedCheatsElements
+        private List<CheatCategoryPanelElement> SpawnedCheatsCategories
         {
             get;
             set;
-        } = new List<CheatElementController>();
+        } = new List<CheatCategoryPanelElement>();
 
         #endregion
 
@@ -50,35 +50,35 @@ namespace BOBCheats.GUI
         {
             DestroySpawnedCheats();
 
-            List<CheatInfo> cheats = Model.GetAvaibleCheats();
-            if(cheats.IsNullOrEmpty() == false)
+            List<CheatCategory> categories = Model.GetAvaibleCheatsCategories();
+            if(categories.IsNullOrEmpty() == false)
             {
-                SpawnCheatsSections(cheats);
+                SpawnCheatsSections(categories);
             }
         }
 
-        private void SpawnCheatsSections(List<CheatInfo> cheats)
+        private void SpawnCheatsSections(List<CheatCategory> categories)
         {
-            for(int i =0; i < cheats.Count; i++)
+            for(int i =0; i < categories.Count; i++)
             {
-                CheatElementController cheatElement = Instantiate(CheatElementPrefab);
-                cheatElement.transform.SetParent(CheatElementPrefab.transform.parent);
+                CheatCategoryPanelElement cheatElement = Instantiate(CheatCategoryPrefab);
+                cheatElement.transform.SetParent(CheatCategoryPrefab.transform.parent);
                 cheatElement.transform.localScale = Vector3.one;
                 cheatElement.gameObject.SetActive(true);
 
-                cheatElement.DrawCheatElement(cheats[i]);
-                SpawnedCheatsElements.Add(cheatElement);
+                cheatElement.Initialize(categories[i]);
+                SpawnedCheatsCategories.Add(cheatElement);
             }
         }
 
         private void DestroySpawnedCheats()
         {
-            for(int i = 0; i < SpawnedCheatsElements.Count; i++)
+            for(int i = 0; i < SpawnedCheatsCategories.Count; i++)
             {
-                Destroy(SpawnedCheatsElements[i].gameObject);
+                Destroy(SpawnedCheatsCategories[i].gameObject);
             }
 
-            SpawnedCheatsElements.Clear();
+            SpawnedCheatsCategories.Clear();
         }
 
         #endregion

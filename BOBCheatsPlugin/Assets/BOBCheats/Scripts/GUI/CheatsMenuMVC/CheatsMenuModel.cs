@@ -21,24 +21,15 @@ namespace BOBCheats.GUI
 
         #region Methods
 
-        public void EnableCheat(CheatInfo cheat, object[] parameters)
-        {
-            BOBCheatsManager bOBCheatsManager = BOBCheatsManager.Instance;
-            if(bOBCheatsManager != null)
-            {
-                bOBCheatsManager.UseCheat(cheat, parameters);
-            }
-        }
-
-        public List<CheatInfo> GetAvaibleCheats()
+        public List<CheatCategory> GetAvaibleCheatsCategories()
         {
             BOBCheatsManager cheatsManager = BOBCheatsManager.Instance;
-            if(cheatsManager == null)
+            if (cheatsManager == null)
             {
                 return null;
             }
 
-            return cheatsManager.CheatsCollection;
+            return cheatsManager.CategoriesCollection;
         }
 
         #endregion
