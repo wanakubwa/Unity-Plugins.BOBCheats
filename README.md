@@ -1,6 +1,6 @@
 # BOBCheats - Unity plugin ![GeekBox Logo](https://github.com/wanakubwa/GeekBox-Unity-Game.Area51/blob/master/Game_Images/48x48_Logo.png)
 
-<p align="center"><img width="100%" src="https://github.com/wanakubwa/BOBCheats/blob/master/Graphic/BOB_Github_cover.png" /></p>
+<p align="center"><img width="100%" src="https://github.com/wanakubwa/BOBCheats/blob/master/Graphic/BOB_Github_cover_update.png" /></p>
 
 ### BOB is a smart cheats system for unity games. The idea to create this plugin was to create a system that would make creating cheats for your game a pleasure. You can create cheats and use it in a game by writing just one single method.
 
