@@ -72,7 +72,7 @@ Settings window can be open from *Window/BOBCheats*.
 ### [Cheat] Attribute
 Each cheat method must have the `[Cheat]` attribute. Using an attribute without parameters will display the cheat name in the menu as a function name with spaces between lower case and upper case letters. The attribute can be defined using a `string` type parameter that defines the name to be displayed in the GUI menu.
 
-Example of using `[Cheat]` attribute with and without parameters.
+Example of using `[Cheat]` attribute without parameters.
 ```csharp
 
     [Cheat]
@@ -82,6 +82,41 @@ Example of using `[Cheat]` attribute with and without parameters.
     }
     
     [Cheat("Change Weather - Rain")]
+    public static void MakeItRain()
+    {
+        // This cheat will be displayed in cheat game menu as "Change Weather - Rain".
+    }
+```
+
+Example of using `[Cheat]` attribute with parameter defined cheats group name. Every group names defined in cheats classes will be displayed as a separated bookmark on 
+BOBCheat GUI.
+```csharp
+
+    [Cheat("Category A")]
+    public static void CategoryACheat1()
+    {
+        // This cheat will be in ,,Category A'' labeled bookmark on GUI.
+    }
+    
+    [Cheat("Category A")]
+    public static void CategoryACheat2()
+    {
+        // This cheat will be in ,,Category A'' labeled bookmark on GUI.
+    }
+    
+    [Cheat("Category B")]
+    public static void CategoryBCheat1()
+    {
+        // This cheat will be in ,,Category B'' labeled bookmark on GUI.
+    }
+```
+
+The `[Cheat]` attribute allows setting a second parameter defining a new cheat name on BOBCheat GUI. If you set the second parameter responsible for category name as empty, the attached cheat will display on the default category named "Other".
+
+Example of using `[Cheat]` attribute with parameter defining name of attached cheat on BOBCheat GUI.
+```csharp
+    
+    [Cheat("", "Change Weather - Rain")]
     public static void MakeItRain()
     {
         // This cheat will be displayed in cheat game menu as "Change Weather - Rain".
