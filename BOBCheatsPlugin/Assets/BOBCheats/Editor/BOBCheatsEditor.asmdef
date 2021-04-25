@@ -1,0 +1,16 @@
+{
+    "name": "BOBCheats.Editor",
+    "references": [
+        "GUID:cac59c7f4c63f134cbde9612486e672a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
