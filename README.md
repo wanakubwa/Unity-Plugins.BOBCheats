@@ -1,6 +1,6 @@
 # BOBCheats - Unity plugin ![GeekBox Logo](https://github.com/wanakubwa/GeekBox-Unity-Game.Area51/blob/master/Game_Images/48x48_Logo.png)
 
-<p align="center"><img width="100%" src="https://github.com/wanakubwa/BOBCheats/blob/master/Graphic/BOB_Github_cover.png" /></p>
+<p align="center"><img width="100%" src="https://github.com/wanakubwa/BOBCheats/blob/master/Graphic/BOB_Github_cover_update.png" /></p>
 
 ### BOB is a smart cheats system for unity games. The idea to create this plugin was to create a system that would make creating cheats for your game a pleasure. You can create cheats and use it in a game by writing just one single method.
 
@@ -72,7 +72,7 @@ Settings window can be open from *Window/BOBCheats*.
 ### [Cheat] Attribute
 Each cheat method must have the `[Cheat]` attribute. Using an attribute without parameters will display the cheat name in the menu as a function name with spaces between lower case and upper case letters. The attribute can be defined using a `string` type parameter that defines the name to be displayed in the GUI menu.
 
-Example of using `[Cheat]` attribute with and without parameters.
+Example of using `[Cheat]` attribute without parameters.
 ```csharp
 
     [Cheat]
@@ -82,6 +82,41 @@ Example of using `[Cheat]` attribute with and without parameters.
     }
     
     [Cheat("Change Weather - Rain")]
+    public static void MakeItRain()
+    {
+        // This cheat will be displayed in cheat game menu as "Change Weather - Rain".
+    }
+```
+
+Example of using `[Cheat]` attribute with parameter defined cheats group name. Every group names defined in cheats classes will be displayed as a separated bookmark on 
+BOBCheat GUI.
+```csharp
+
+    [Cheat("Category A")]
+    public static void CategoryACheat1()
+    {
+        // This cheat will be in ,,Category A'' labeled bookmark on GUI.
+    }
+    
+    [Cheat("Category A")]
+    public static void CategoryACheat2()
+    {
+        // This cheat will be in ,,Category A'' labeled bookmark on GUI.
+    }
+    
+    [Cheat("Category B")]
+    public static void CategoryBCheat1()
+    {
+        // This cheat will be in ,,Category B'' labeled bookmark on GUI.
+    }
+```
+
+The `[Cheat]` attribute allows setting a second parameter defining a new cheat name on BOBCheat GUI. If you set the second parameter responsible for category name as empty, the attached cheat will display on the default category named "Other".
+
+Example of using `[Cheat]` attribute with parameter defining name of attached cheat on BOBCheat GUI.
+```csharp
+    
+    [Cheat("", "Change Weather - Rain")]
     public static void MakeItRain()
     {
         // This cheat will be displayed in cheat game menu as "Change Weather - Rain".
