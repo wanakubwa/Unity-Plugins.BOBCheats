@@ -11,6 +11,13 @@
   You can also support me by buying a coffee! :coffee:
 </p>
 
+## Changelog
+
+### v.2.1
+- **Added** boolean type argument drawer so now it's possible to create cheats with bool arguments.
+- **Added** custom assemblies to separate BOB from other stuff in project.
+- **Changed** now double tap is disabled on no mobile platforms (Android and IOS) and only avaible on mobile divices.
+
 ## :floppy_disk: How do I cheat? (Installation)
 To start working with BOB, just follow a few simple steps.
 1. Download and unpack latest release version of plugin (.unitypackage) from [**Here!**](https://github.com/wanakubwa/BOBCheats/releases)
@@ -125,7 +132,7 @@ Example of using `[Cheat]` attribute with parameter defining name of attached ch
 
 ## :exclamation: Limitations
 
-- Only prymitive types can be used as cheat parameters (string, int, float).
+- Only prymitive types can be used as cheat parameters (string, int, float, boolean).
 
 <br></br>
 <p align="center"><strong> If you found a bug in the plugin or have an idea for additional functionality, open <a href="https://github.com/wanakubwa/BOBCheats/issues">Issue</a> and write your opinion in it.</strong>
