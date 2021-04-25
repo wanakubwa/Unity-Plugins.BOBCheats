@@ -473,21 +473,7 @@ MonoBehaviour:
   - {fileID: 9100352369973270750, guid: e82ea4163d464234eb6bd50b9a1884c3, type: 3}
   - {fileID: 3630437203072329980, guid: 3e7456cf5a8c9dc4c95b62a3b9d68e2e, type: 3}
   - {fileID: 5935163533444111184, guid: b2b9d462ada9c074da1170f90d5efc88, type: 3}
-  onSelectCheat:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SelectCheat
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 5247878359984460206}
-          m_ObjectArgumentAssemblyTypeName: BOBCheats.GUI.CheatElementController,
-            Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - {fileID: 5026542086095355306, guid: 2b126c2a9a2958343bf389840d63f6ca, type: 3}
 --- !u!1 &7686976427191016516
 GameObject:
   m_ObjectHideFlags: 0

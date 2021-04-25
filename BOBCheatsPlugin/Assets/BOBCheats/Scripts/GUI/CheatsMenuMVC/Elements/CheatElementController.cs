@@ -136,6 +136,10 @@ namespace BOBCheats.GUI
             {
                 field = GetFieldByLabel(ParameterInputField.InputFieldType.STRING);
             }
+            else if (fieldType == typeof(bool))
+            {
+                field = GetFieldByLabel(ParameterInputField.InputFieldType.BOOL);
+            }
             else
             {
                 Debug.LogErrorFormat("[BOBCheats] This type of field {0} is not supported!", fieldType);
