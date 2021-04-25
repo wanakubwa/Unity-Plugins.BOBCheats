@@ -1,10 +1,6 @@
 ﻿using BOBCheats.Collections;
 using BOBCheats.GUI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace BOBCheats
@@ -147,6 +143,8 @@ namespace BOBCheats
                 ToggleCheatMenuGUI();
             }
 
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+
             if (Input.GetMouseButtonDown(0))
             {
                 if (OneClick == false)
@@ -168,14 +166,15 @@ namespace BOBCheats
                     OneClick = false;
                 }
             }
+#endif
 
-            #endregion
+#endregion
 
-            #region Enums
+#region Enums
 
 
 
-            #endregion
+#endregion
         }
     }
 }
