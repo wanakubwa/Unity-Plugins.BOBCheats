@@ -4,9 +4,9 @@ using UnityEngine;
 public class MyCheatsTest : CheatBase
 {
     [Cheat]
-    public static void PauseGameCheat()
+    public static void PauseGameCheat(bool isPause)
     {
-        Debug.Log("PauseGameCheat");
+        Debug.LogFormat("PauseGameCheat: {0}", isPause);
     }
 
     [Cheat]

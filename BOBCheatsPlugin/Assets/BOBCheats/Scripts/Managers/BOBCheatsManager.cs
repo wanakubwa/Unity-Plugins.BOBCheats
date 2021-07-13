@@ -60,10 +60,34 @@ namespace BOBCheats
 
         #endregion
 
-        /// <summary>
-        /// Use it for initialize BOB cheats collections. If using manual initialize setted in settings.
-        /// </summary>
+
         #region Methods
+
+        /// <summary>
+        /// Use it for initialize BOB cheats, if auto initialize is enabled.
+        /// </summary>
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void AutoInitialize()
+        {
+            // BOB is already initiaized on scene.
+            if(Instance != null)
+            {
+                return;
+            }
+
+            if(BOBCheatsSettings.IsAutoInitialize == true)
+            {
+                GameObject go = new GameObject("BOBCheatManager");
+                BOBCheatsManager bob = go.AddComponent<BOBCheatsManager>();
+
+                GameObject cheatsMenuObj = Resources.Load("GUI/BOBCheatsGUI") as GameObject;
+                bob.CheatMenuGUIPrefab = cheatsMenuObj.GetComponent<CheatsMenuController>();
+
+                GameObject.DontDestroyOnLoad(go);
+
+                Debug.Log("[BOBCheats] Auto initialized!");
+            }
+        }
 
         public void ToggleCheatMenuGUI()
         {

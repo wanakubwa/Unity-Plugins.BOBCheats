@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace BOBCheats
 {
     [Serializable]
@@ -24,6 +28,9 @@ namespace BOBCheats
         [Space]
         [SerializeField]
         private List<CheatCategory> cheatsCategories = new List<CheatCategory>();
+
+        [SerializeField]
+        private bool isAutoinitializeEnabled = true;
 
         #endregion
 
@@ -56,9 +63,25 @@ namespace BOBCheats
             private set => cheatsCategories = value; 
         }
 
+        public bool IsAutoinitializeEnabled { 
+            get => isAutoinitializeEnabled; 
+            private set => isAutoinitializeEnabled = value; 
+        }
+
+        #endregion
+
+        #region Settings Shortcuts
+
+        public static bool IsAutoInitialize => Instance.IsAutoinitializeEnabled;
+
         #endregion
 
         #region Methods
+
+        public void SetAutoInit(bool isAutoinit)
+        {
+            IsAutoinitializeEnabled = isAutoinit;
+        }
 
         public void SetTriggerKey(KeyCode key)
         {
@@ -185,7 +208,16 @@ namespace BOBCheats
             return cheat;
         }
 
-        #endregion
+#if UNITY_EDITOR
+        public void SaveThisAsset()
+        {
+            EditorUtility.SetDirty(this);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+#endif
+
+#endregion
 
         #region Enums
 

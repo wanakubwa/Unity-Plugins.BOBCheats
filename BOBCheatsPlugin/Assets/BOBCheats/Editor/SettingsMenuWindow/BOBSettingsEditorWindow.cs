@@ -53,6 +53,11 @@ namespace BOBCheats.Editor
             LogoGraphic = Resources.Load("Graphic/BOBCheats_Logo_v1") as Texture;
         }
 
+        private void OnDestroy()
+        {
+            Settings.SaveThisAsset();
+        }
+
         void OnGUI()
         {
             GUILayout.Box(LogoGraphic, GUILayout.Height(100), GUILayout.Width(EditorGUIUtility.currentViewWidth));
@@ -60,6 +65,9 @@ namespace BOBCheats.Editor
 
             EditorGUILayout.BeginVertical();
 
+            Settings.SetAutoInit(EditorGUILayout.Toggle("Is auto initialize enabled?", Settings.IsAutoinitializeEnabled));
+
+            GUILayout.Space(10);
             DrawEnumPopUp("Activate key short", Settings.TriggerKey, Settings.SetTriggerKey);
             EditorGUILayout.Space();
             DrawButton("Reload cheats collection", Settings.RefreshCheatsCollection);
