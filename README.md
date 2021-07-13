@@ -67,9 +67,10 @@ public class GameCheats : CheatBase
 
 Settings window can be open from *Window/BOBCheats*.
 <p align="center">
-  <img width="460" height="300" src="https://github.com/wanakubwa/BOBCheats/blob/master/Graphic/BOB_Settings_show.png">
+  <img width="460" src="https://github.com/wanakubwa/BOBCheats/blob/master/Graphic/BOB_Settings_show_v2.png">
 </p>
 
+- **IS auto initialize enabled** - Set auto initialize *ON* or *OFF*, if *ON* BOBCheatsManager will be spawned automatically after scene loaded.
 - **Activate key short** - Set key to show BOB menu in game (default f12).
 - **Reload cheats collection** - Manual refresh collection of all created cheats.
 - **Create BOBManager** - Spawn BOBManager in scene hierarchy, can be saved as .prefab.
