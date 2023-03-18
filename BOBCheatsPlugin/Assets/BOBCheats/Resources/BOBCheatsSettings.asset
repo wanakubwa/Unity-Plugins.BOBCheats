@@ -36,4 +36,4 @@ MonoBehaviour:
     - cheatName: Category C Cheat1
     - cheatName: Category C Cheat2
     - cheatName: Category C Cheat3
-  isAutoinitializeEnabled: 0
+  isAutoinitializeEnabled: 1

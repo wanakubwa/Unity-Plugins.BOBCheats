@@ -1,5 +1,6 @@
 ﻿using BOBCheats.Collections;
 using BOBCheats.GUI;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,9 @@ namespace BOBCheats
 
         [Space]
         [SerializeField]
-        private CheatsMenuController cheatMenuGUIPrefab;
+        private CheatsMenuController cheatMobileMenuGUIPrefab;
+        [SerializeField]
+        private CheatsMenuController cheatDesktopMenuGUIPrefab;
 
         #endregion
 
@@ -35,7 +38,7 @@ namespace BOBCheats
             }
         }
 
-        public CheatsMenuController CheatMenuGUIPrefab { get => cheatMenuGUIPrefab; set => cheatMenuGUIPrefab = value; }
+        public CheatsMenuController CheatMenuGUIPrefab { get => cheatMobileMenuGUIPrefab; set => cheatMobileMenuGUIPrefab = value; }
 
         public List<CheatCategory> CategoriesCollection {
             get;
@@ -81,7 +84,10 @@ namespace BOBCheats
                 BOBCheatsManager bob = go.AddComponent<BOBCheatsManager>();
 
                 GameObject cheatsMenuObj = Resources.Load("GUI/BOBCheatsGUI") as GameObject;
+                GameObject cheatsDesktopMenuObj = Resources.Load("GUI/BOBCheatsGUI_Desktop") as GameObject;
+
                 bob.CheatMenuGUIPrefab = cheatsMenuObj.GetComponent<CheatsMenuController>();
+                bob.cheatDesktopMenuGUIPrefab = cheatsDesktopMenuObj.GetComponent<CheatsMenuController>();
 
                 GameObject.DontDestroyOnLoad(go);
 
@@ -103,9 +109,16 @@ namespace BOBCheats
 
         public void ShowGUI()
         {
-            CheatsMenuController cheatMenuGUI = Instantiate(CheatMenuGUIPrefab);
-            cheatMenuGUI.transform.localScale = Vector3.one;
-            CurrentCheatGUI = cheatMenuGUI;
+            try
+            {
+                CheatsMenuController cheatMenuGUI = Instantiate(GetCheatsGuiPrefabForCurrentPlatform());
+                cheatMenuGUI.transform.localScale = Vector3.one;
+                CurrentCheatGUI = cheatMenuGUI;
+            }
+            catch(Exception ex) 
+            {
+                Debug.LogError(ex.Message);
+            }
         }
 
         public void HideGUI()
@@ -158,6 +171,34 @@ namespace BOBCheats
             }
 
             DontDestroyOnLoad(this.gameObject);
+        }
+
+        private CheatsMenuController GetCheatsGuiPrefabForCurrentPlatform()
+        {
+            CheatsMenuController guiPrefab = null;
+
+            switch (Application.platform)
+            {
+                case RuntimePlatform.Android:
+                case RuntimePlatform.IPhonePlayer:
+                    guiPrefab = cheatMobileMenuGUIPrefab;
+                    break;
+
+                case RuntimePlatform.WindowsEditor:
+                case RuntimePlatform.WindowsPlayer:
+                case RuntimePlatform.LinuxEditor:
+                case RuntimePlatform.LinuxPlayer:
+                case RuntimePlatform.OSXEditor:
+                case RuntimePlatform.OSXPlayer:
+                    guiPrefab = cheatDesktopMenuGUIPrefab;
+                    break;
+
+                default:
+                    guiPrefab = cheatMobileMenuGUIPrefab;
+                    break;
+            }
+
+            return guiPrefab;
         }
 
         private void Update()
