@@ -57,10 +57,6 @@ namespace BOBCheats
             set;
         }
 
-        private bool OneClick { get; set; } = false;
-        private float TimerForDoubleClick { get; set; }
-        private float DoubleClickDelay { get; set; } = 0.2f;
-
         #endregion
 
 
@@ -93,6 +89,29 @@ namespace BOBCheats
 
                 Debug.Log("[BOBCheats] Auto initialized!");
             }
+        }
+
+        public static void InitializeManually()
+        {
+            // BOB was initialized before.
+            if (Instance != null)
+            {
+                Debug.LogWarning("[BOBCheats] Is already initialized check your code!");
+                return;
+            }
+
+            GameObject go = new GameObject("BOBCheatManager");
+            BOBCheatsManager bob = go.AddComponent<BOBCheatsManager>();
+
+            GameObject cheatsMenuObj = Resources.Load("GUI/BOBCheatsGUI") as GameObject;
+            GameObject cheatsDesktopMenuObj = Resources.Load("GUI/BOBCheatsGUI_Desktop") as GameObject;
+
+            bob.CheatMenuGUIPrefab = cheatsMenuObj.GetComponent<CheatsMenuController>();
+            bob.cheatDesktopMenuGUIPrefab = cheatsDesktopMenuObj.GetComponent<CheatsMenuController>();
+
+            GameObject.DontDestroyOnLoad(go);
+
+            Debug.Log("[BOBCheats] Manually initialized!");
         }
 
         public void ToggleCheatMenuGUI()
