@@ -76,16 +76,7 @@ namespace BOBCheats
 
             if(BOBCheatsSettings.IsAutoInitialize == true)
             {
-                GameObject go = new GameObject("BOBCheatManager");
-                BOBCheatsManager bob = go.AddComponent<BOBCheatsManager>();
-
-                GameObject cheatsMenuObj = Resources.Load("GUI/BOBCheatsGUI") as GameObject;
-                GameObject cheatsDesktopMenuObj = Resources.Load("GUI/BOBCheatsGUI_Desktop") as GameObject;
-
-                bob.CheatMenuGUIPrefab = cheatsMenuObj.GetComponent<CheatsMenuController>();
-                bob.cheatDesktopMenuGUIPrefab = cheatsDesktopMenuObj.GetComponent<CheatsMenuController>();
-
-                GameObject.DontDestroyOnLoad(go);
+                InitializeBOBCheatsModule();
 
                 Debug.Log("[BOBCheats] Auto initialized!");
             }
@@ -100,16 +91,7 @@ namespace BOBCheats
                 return;
             }
 
-            GameObject go = new GameObject("BOBCheatManager");
-            BOBCheatsManager bob = go.AddComponent<BOBCheatsManager>();
-
-            GameObject cheatsMenuObj = Resources.Load("GUI/BOBCheatsGUI") as GameObject;
-            GameObject cheatsDesktopMenuObj = Resources.Load("GUI/BOBCheatsGUI_Desktop") as GameObject;
-
-            bob.CheatMenuGUIPrefab = cheatsMenuObj.GetComponent<CheatsMenuController>();
-            bob.cheatDesktopMenuGUIPrefab = cheatsDesktopMenuObj.GetComponent<CheatsMenuController>();
-
-            GameObject.DontDestroyOnLoad(go);
+            InitializeBOBCheatsModule();
 
             Debug.Log("[BOBCheats] Manually initialized!");
         }
@@ -159,6 +141,20 @@ namespace BOBCheats
 
             Debug.LogFormat("[BOBCheat] Activate cheat name: {0}", cheat.CheatName);
             cheat.CachedInfo.Invoke(null, parameters);
+        }
+
+        private static void InitializeBOBCheatsModule()
+        {
+            GameObject go = new GameObject("BOBCheatManager");
+            BOBCheatsManager bob = go.AddComponent<BOBCheatsManager>();
+
+            GameObject cheatsMenuObj = Resources.Load("GUI/BOBCheatsGUI") as GameObject;
+            GameObject cheatsDesktopMenuObj = Resources.Load("GUI/BOBCheatsGUI_Desktop") as GameObject;
+
+            bob.CheatMenuGUIPrefab = cheatsMenuObj.GetComponent<CheatsMenuController>();
+            bob.cheatDesktopMenuGUIPrefab = cheatsDesktopMenuObj.GetComponent<CheatsMenuController>();
+
+            GameObject.DontDestroyOnLoad(go);
         }
 
         private void Awake()
